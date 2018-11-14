@@ -29,6 +29,13 @@ public class CollectionStreamTests {
         employees1.forEach(emp -> System.out.println(emp.salary));
     }
 
+    @Test
+    public void testConvertToList(){
+        Stream<Employee> arrayOfEmps1 = Stream.of(arrayOfEmps);
+        List<Employee> list = arrayOfEmps1.collect(Collectors.toList());
+        System.out.println("Array Size : "+ arrayOfEmps.length+" Size of List : "+ list.size());
+    }
+
     private class Employee{
         private long id;
         private String name;
@@ -43,7 +50,5 @@ public class CollectionStreamTests {
         public void addSalary(double additionalSalary){
             this.salary = this.salary+additionalSalary;
         }
-
-
     }
 }
