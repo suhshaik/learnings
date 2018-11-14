@@ -8,5 +8,8 @@ public class StreamAddition {
         Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
         int sum = integerStream.filter(i -> i > 2).mapToInt(i -> i).sum();
         System.out.printf("Sum is : " + sum);
+        
+        System.out.printf("New changes added on GIT directly");
+       
     }
 }
