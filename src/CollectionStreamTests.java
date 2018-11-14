@@ -2,6 +2,7 @@ import com.sun.tools.javac.util.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -49,6 +50,20 @@ public class CollectionStreamTests {
         System.out.println("Array Size : "+ arrayOfEmps.length+" Size of List : "+ list.size());
     }
 
+    @Test
+    public void testFindFirst(){
+        Stream<Employee> arrayOfEmps = Stream.of(this.arrayOfEmps);
+        Employee firstEmployee = arrayOfEmps.findFirst().get();
+        System.out.println("First Employee : "+ firstEmployee.id);
+    }
+
+    @Test
+    public void testMapToIntegers(){
+        Stream<Employee> arrayOfEmps = Stream.of(this.arrayOfEmps);
+        List<Long> ids = arrayOfEmps.map(Employee::getId).collect(Collectors.toList());
+        System.out.println(ids);
+    }
+
     private class Employee{
         private long id;
         private String name;
@@ -62,6 +77,18 @@ public class CollectionStreamTests {
 
         public void addSalary(double additionalSalary){
             this.salary = this.salary+additionalSalary;
+        }
+
+        public long getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public double getSalary() {
+            return salary;
         }
     }
 }
