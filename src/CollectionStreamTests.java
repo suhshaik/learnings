@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -62,6 +63,42 @@ public class CollectionStreamTests {
         Stream<Employee> arrayOfEmps = Stream.of(this.arrayOfEmps);
         List<Long> ids = arrayOfEmps.map(Employee::getId).collect(Collectors.toList());
         System.out.println(ids);
+    }
+
+    @Test
+    public void testSortList(){
+        List<Integer> list = Arrays.asList(3,5,2,1,7);
+        Stream<Integer> s = list.stream();
+        List<Integer> sortedList = s.sorted().collect(Collectors.toList());
+        sortedList.forEach(i -> System.out.println(i.intValue()));
+    }
+
+    @Test
+    public void testLamdaSortList(){
+        List<Integer> list = Arrays.asList(3,5,2,1,7);
+        Stream<Integer> s = list.stream();
+        List<Integer> sortedList = s.sorted(
+                 (a,b) -> (a.intValue() - b.intValue())
+        ).collect(Collectors.toList());
+        sortedList.forEach(i -> System.out.println(i.intValue()));
+    }
+
+    @Test
+    public void testSortListReverse(){
+        List<Integer> list = Arrays.asList(3,5,2,1,7);
+        Stream<Integer> s = list.stream();
+        List<Integer> sortedList = s.sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+        sortedList.forEach(i -> System.out.println(i.intValue()));
+    }
+
+    @Test
+    public void testLamdaSortListReverse(){
+        List<Integer> list = Arrays.asList(3,5,2,1,7);
+        Stream<Integer> s = list.stream();
+        List<Integer> sortedList = s.sorted(
+                (a,b) -> (b.intValue()-a.intValue())
+        ).collect(Collectors.toList());
+        sortedList.forEach(i -> System.out.println(i.intValue()));
     }
 
     private class Employee{
