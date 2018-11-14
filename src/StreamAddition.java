@@ -10,6 +10,5 @@ public class StreamAddition {
         System.out.println("Sum is : " + sum);
         
         System.out.println("New changes added on GIT directly");
-       
     }
 }
