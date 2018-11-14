@@ -1,3 +1,4 @@
+import com.sun.tools.javac.util.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -27,6 +28,18 @@ public class CollectionStreamTests {
         List<Employee> employees1 = Arrays.asList(arrayOfEmps);
 
         employees1.forEach(emp -> System.out.println(emp.salary));
+    }
+
+    @Test
+    public void testMatchingPredicates(){
+        Stream<Employee> arrayOfEmps = Stream.of(this.arrayOfEmps);
+        arrayOfEmps.filter(e -> e.name.equals("Bill Gates")).forEach(emp -> System.out.println(emp.name));
+    }
+
+    @Test
+    public void testFindMatchingAny(){
+        Stream<Employee> arrayOfEmps = Stream.of(this.arrayOfEmps);
+        Assert.check(arrayOfEmps.anyMatch(e -> e.name.equals("Jeff Bezos")), "Employee Not Found");
     }
 
     @Test
