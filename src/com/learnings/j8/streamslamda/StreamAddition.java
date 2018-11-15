@@ -1,3 +1,5 @@
+package com.learnings.j8.streamslamda;
+
 import java.util.stream.Stream;
 
 public class StreamAddition {

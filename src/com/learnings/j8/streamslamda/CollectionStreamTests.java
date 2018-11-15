@@ -1,3 +1,5 @@
+package com.learnings.j8.streamslamda;
+
 import com.sun.tools.javac.util.Assert;
 import org.junit.jupiter.api.Test;
 
